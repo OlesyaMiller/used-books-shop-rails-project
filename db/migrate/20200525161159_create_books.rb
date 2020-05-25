@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.text :description
       t.integer :munber_of_pages
       t.text :author 
+      t.boolean :for_sale, default: false 
       t.timestamps
     end
   end

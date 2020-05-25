@@ -1,3 +1,6 @@
 class UsersController < ApplicationController
-    has_secure_password
+
+    def new
+        @user = User.new
+    end
 end
