@@ -4,8 +4,9 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.text :title
       t.integer :genre_id
       t.text :description
-      t.integer :munber_of_pages
+      t.integer :number_of_pages
       t.text :author 
+      t.integer :price 
       t.boolean :for_sale, default: false 
       t.timestamps
     end

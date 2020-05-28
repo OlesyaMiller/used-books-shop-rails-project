@@ -1,0 +1,12 @@
+This is a show page!
+
+<%= @book.title %>
+<%= @book.author %>
+<%= @book.number_of_pages %>
+<%= @book.price %>
+
+<%= form_for @purchase do |f| %>
+    <%= f.hidden_field :user_id %><br />
+    <%= f.hidden_field :book_id %><br />
+    <%= f.submit "Purchase This Book" %>
+<% end %>

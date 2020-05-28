@@ -6,10 +6,41 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <% if logged_in? %>
+    <!-- <p>You are logged in as <%= current_user.username %> </p> -->
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= books_path %>">All Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/books/new">Create Listing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%= current_user.id %>">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>  
+    </ul>
+  <% end %>
+
+    <div class = container> 
+
+      <%= yield %>
+
+    <br/>
+    <% if flash[:message] %>
+      <%= flash[:message] %>
+    <% end %> 
+
+    </div>    
   </body>
 </html>
