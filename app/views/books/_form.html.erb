@@ -1,0 +1,24 @@
+<%= form_for @book do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description %>
+
+    <%= f.label :genre_id, "Select Genre" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+
+    <%= f.label :number_of_pages, "Number of Pages" %>
+    <%= f.number_field :number_of_pages %>
+
+    <%= f.label :author, "Author" %>
+    <%= f.text_field :author %>
+
+    <%= f.label :price, "Price" %>
+    <%= f.text_field :price %>
+
+    <%= f.label :for_sale, "For Sale" %>
+    <%= f.check_box :for_sale %>
+
+    <%= f.submit %>
+<% end %>
