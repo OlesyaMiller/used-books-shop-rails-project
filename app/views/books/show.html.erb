@@ -3,9 +3,13 @@
 <p>Number of Pages: <%= @book.number_of_pages %></p>
 <p>Price: <%= @book.price %></p>
 <p><strong>Your Credit: <%= current_user.credit %></strong></p>
-<br/>
+
 <%= form_for @purchase do |f| %>
     <%= f.hidden_field :user_id %><br />
     <%= f.hidden_field :book_id %><br />
+    <%= f.label :location, "Location of the purchase" %><br/>
+    <%= f.text_field :location %><br/>
     <%= f.submit "Purchase This Book" %>
 <% end %>
+
+<%= link_to "Edit Listing", edit_book_path(@book) %>

@@ -16,10 +16,33 @@ class BooksController < ApplicationController
     def show
         @book = Book.find_by(id: params[:id])
         @purchase = @book.purchases.build(user_id: current_user.id)
+        # @purchase = Purchase.new
+        # @purchase.book_id = @book.id
+        # @purchase.user_id = current_user.id
+        # we don't need to save @purchase 
     end
 
     def index
-        @books = Book.all 
+        if !params[:user_id]
+            @books = Book.all 
+        else
+            user = User.find_by(id: params[:user_id])
+            @books = user.books
+        end
+    end
+
+    def edit
+        @book = Book.find_by(id: params[:id])
+    end
+
+    def update
+        @book = Book.find_by(id: params[:id])
+        if @book
+            @book.update(book_params)
+            redirect_to book_path(@book)
+        else
+            render :edit 
+        end
     end
 
     private 

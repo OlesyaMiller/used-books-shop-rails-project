@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    # def require_login
-    #     current_user ? current_user : redirect_to root_path 
-    # end
+    def require_login
+        if current_user 
+            current_user
+        else 
+            redirect_to root_path
+        end 
+    end
 end

@@ -13,9 +13,26 @@ class SessionController < ApplicationController
         end
     end
 
+    def omniauth
+        @user = User.find_or_create_by(id: auth['id']) do |u|
+            u.username = auth['info']['username']
+            u.email = auth['info']['email']
+        end
+       
+        session[:user_id] = @user.id
+       
+        render 'static/home'
+    end
+
     def destroy
         session.delete("user_id") 
         redirect_to root_path
+    end
+
+    private
+ 
+    def auth
+        request.env['omniauth.auth']
     end
 
 end

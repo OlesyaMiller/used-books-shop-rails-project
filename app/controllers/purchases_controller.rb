@@ -11,7 +11,8 @@ class PurchasesController < ApplicationController
     def purchase_params
         params.require(:purchase).permit(
         :user_id,
-        :book_id
+        :book_id,
+        :location
         )
     end
 
