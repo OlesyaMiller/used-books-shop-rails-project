@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
 
     def new
-        @book = Book.new
+        if params[:user_id]
+            @book = Book.new 
+            @user = User.find_by(id: params[:user_id])
+            @book.users << @user 
+        else
+            @book = Book.new
+        end
     end
 
     def create
@@ -27,7 +33,9 @@ class BooksController < ApplicationController
             @books = Book.all 
         else
             user = User.find_by(id: params[:user_id])
-            @books = user.books
+            if user 
+                @books = user.books
+            end
         end
     end
 
@@ -48,7 +56,7 @@ class BooksController < ApplicationController
     private 
 
     def book_params 
-        params.require(:book).permit(:title, :genre_id, :description, :number_of_pages, :author, :for_sale, :price)
+        params.require(:book).permit(:title, :genre_id, :description, :number_of_pages, :author, :for_sale, :price, user_ids:[])
     end
 
 end

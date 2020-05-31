@@ -20,5 +20,7 @@
     <%= f.label :for_sale, "For Sale" %>
     <%= f.check_box :for_sale %>
 
+    <%= hidden_field_tag "book[user_ids][]", @user.id if @user %>
+
     <%= f.submit %>
 <% end %>
