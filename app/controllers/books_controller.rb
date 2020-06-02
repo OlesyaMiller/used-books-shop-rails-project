@@ -32,7 +32,7 @@ class BooksController < ApplicationController
 
     def index
         if !params[:user_id]
-            @books = Book.all 
+            @books = Book.search(params[:search]) 
         else
             user = User.find_by(id: params[:user_id])
             if user 
