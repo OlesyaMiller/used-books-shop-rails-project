@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(book_params)
-        if @book.save && logged_in?
+        if @book.save && logged_in? && @book.valid?
             redirect_to book_path(@book)
         else
             render :new
