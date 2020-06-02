@@ -5,8 +5,10 @@ class BooksController < ApplicationController
             @book = Book.new 
             @user = User.find_by(id: params[:user_id])
             @book.users << @user 
+            @book.build_genre 
         else
             @book = Book.new
+            @book.build_genre  
         end
     end
 
@@ -56,7 +58,7 @@ class BooksController < ApplicationController
     private 
 
     def book_params 
-        params.require(:book).permit(:title, :genre_id, :description, :number_of_pages, :author, :for_sale, :price, user_ids:[])
+        params.require(:book).permit(:title, :genre_id, :description, :number_of_pages, :author, :for_sale, :price, user_ids:[], genre_attributes: [:name] )
     end
 
 end

@@ -5,8 +5,13 @@
     <%= f.label :description, "Description" %>
     <%= f.text_field :description %>
 
-    <%= f.label :genre_id, "Select Genre" %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    <%#= f.label :genre_id, "Select Genre" %>
+    <%#= f.collection_select :genre_id, Genre.all, :id, :name %>
+
+    <%= f.fields_for :genre do |g| %>
+        <%= g.label "Genre Name" %>
+        <%= g.text_field :name %>
+    <% end %>
 
     <%= f.label :number_of_pages, "Number of Pages" %>
     <%= f.number_field :number_of_pages %>

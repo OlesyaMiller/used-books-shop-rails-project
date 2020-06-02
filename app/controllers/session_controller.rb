@@ -14,11 +14,11 @@ class SessionController < ApplicationController
     end
 
     def omniauth
-        @user = User.find_or_create_by(id: auth['id']) do |u|
-            u.username = auth['info']['username']
+        @user = User.find_or_create_by(email: auth['info']['email']) do |u|
+            u.username = auth['info']['name']
             u.email = auth['info']['email']
+            u.password = "password"
         end
-       
         session[:user_id] = @user.id
        
         render 'static/home'
