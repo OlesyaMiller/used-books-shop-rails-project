@@ -8,9 +8,12 @@
 <%= form_for @purchase do |f| %>
     <%= f.hidden_field :user_id %><br />
     <%= f.hidden_field :book_id %><br />
-    <%= f.label :location, "Location of the purchase" %><br/>
+    <%= f.label :location, "Location of the Purchase" %><br/>
     <%= f.text_field :location %><br/>
     <%= f.submit "Purchase This Book" %>
 <% end %>
 
-<%= link_to "Edit Listing", edit_book_path(@book) %>
+<%# if @book.user == current_user %>
+    <%= link_to "Edit Listing", edit_book_path(@book) %><br/>
+    <%= link_to "Delete Listing", @book, method: :delete %>
+<%# end %>  
