@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :purchases
     resources :books
     resources :users do
-        resources :books
+        resources :purchases, :books 
     end
 
     get '/signin', to: "session#signin", as: 'signin'

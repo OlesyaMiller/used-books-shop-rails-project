@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
-    def update 
+    def update #not updating 
         @user = User.find_by(id: params[:id])
         if @user
             @user.update(user_params)

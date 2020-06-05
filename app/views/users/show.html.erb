@@ -3,6 +3,7 @@ Email: <%= current_user.email %><br/>
 Credit: <%= current_user.credit %><br/>
 
 <%= link_to "See My Purchases", user_books_path(current_user) %><br/>
+<%= link_to "Make a New Purchase", new_user_purchase_path(current_user) %><br/>
 <%= link_to "Edit Profile", edit_user_path(current_user) %>
 
 
