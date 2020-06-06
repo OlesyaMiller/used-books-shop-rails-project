@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+    before_action :require_login
 
     def new
         if params[:user_id]

@@ -1,12 +1,6 @@
 <h2>Registration Page</h2>
 
-    <% if @user.errors.any? %>
-        <ul> 
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>    
-        </ul>
-    <% end %>
+<%= render partial: "books/error_message", locals: { l_var: @user } %>
 
 <%= render 'form' %>
 

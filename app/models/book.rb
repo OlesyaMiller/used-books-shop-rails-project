@@ -8,11 +8,4 @@ class Book < ApplicationRecord
 
     scope :search, -> (query){where('title LIKE ?', "%#{query}%")}
 
-    # def self.search(query)
-    #     if query
-    #         self.where('title LIKE ?', "%#{query}%")
-    #     else
-    #         Book.all 
-    #     end
-    # end
 end

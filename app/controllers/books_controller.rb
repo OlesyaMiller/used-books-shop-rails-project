@@ -1,15 +1,9 @@
 class BooksController < ApplicationController
+    before_action :require_login
 
     def new
-        # if params[:user_id]
-        #     @book = Book.new 
-        #     find_user
-        #     @book.users << @user 
-        #     @book.build_genre 
-        # else
         @book = Book.new
         @book.build_genre  
-        # end
     end
 
     def create
