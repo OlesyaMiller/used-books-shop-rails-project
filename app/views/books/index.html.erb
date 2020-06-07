@@ -1,11 +1,13 @@
 <h2>All Books</h2>
 
-<p><strong>Search by Title:</strong></p>
+<% if !params[:user_id] %>
+    <p><strong>Search by Title:</strong></p>
 
     <%= form_tag(books_path, method: :get) do %>
         <%= text_field_tag(:search, params[:search]) %>
         <%= submit_tag ("Search") %> 
     <% end %>
+<% end %>
 
 <% @books.each do |book| %>
     <%= link_to book.title, book_path(book) %><br/>
