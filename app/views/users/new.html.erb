@@ -1,7 +1,7 @@
 <h2>Registration Page</h2>
 
-<%= render partial: "books/error_message", locals: { l_var: @user } %>
+<%= render partial: "application/error_message", locals: { l_var: @user } %>
 
 <%= render 'form' %>
 
-<%= link_to "Sign In", "/signin" %>
+<%= link_to "Sign In", signin_path %>

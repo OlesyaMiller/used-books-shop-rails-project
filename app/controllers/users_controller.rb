@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :require_login, except: [:new, :home, :create]
+    before_action :require_login, except: [:new, :create]
 
     def new
         @user = User.new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
-    def update #not updating 
+    def update 
         @user = User.find_by(id: params[:id])
         if @user
             @user.update(user_params)
