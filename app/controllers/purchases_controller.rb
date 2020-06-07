@@ -2,13 +2,9 @@ class PurchasesController < ApplicationController
     before_action :require_login
 
     def new
-        if params[:user_id]
-            @purchase = Purchase.new 
-            @user = User.find(params[:user_id])
-            @purchase.user = @user 
-        else
-            @purchase = Purchase.new 
-        end
+        @purchase = Purchase.new 
+        @user = User.find(params[:user_id])
+        @purchase.user = @user 
     end
 
     def create

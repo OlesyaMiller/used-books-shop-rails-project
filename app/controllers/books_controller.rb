@@ -28,7 +28,7 @@ class BooksController < ApplicationController
         if !params[:user_id]
             @books = Book.search(params[:search]) 
         else
-            find_user
+            @user = User.find_by(id: params[:user_id])
             if @user 
                 @books = @user.books
             end
@@ -65,9 +65,4 @@ class BooksController < ApplicationController
     def find_book
         @book = Book.find_by(id: params[:id])
     end
-
-    def find_user
-        @user = User.find_by(id: params[:user_id])
-    end
-
 end
