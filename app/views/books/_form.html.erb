@@ -5,9 +5,6 @@
     <%= f.label :description, "Description" %>
     <%= f.text_field :description %>
 
-    <%#= f.label :genre_id, "Select Genre" %>
-    <%#= f.collection_select :genre_id, Genre.all, :id, :name %>
-
     <%= f.fields_for :genre do |g| %>
         <%= g.label "Genre Name" %>
         <%= g.text_field :name %>
@@ -21,11 +18,6 @@
 
     <%= f.label :price, "Price" %>
     <%= f.text_field :price %>
-
-    <%#= f.label :for_sale, "For Sale" %>
-    <%#= f.check_box :for_sale %>
-
-    <%= hidden_field_tag "book[user_ids][]", @user.id if @user %>
 
     <%= f.submit %>
 <% end %>
