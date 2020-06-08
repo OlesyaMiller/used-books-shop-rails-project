@@ -8,7 +8,7 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(book_params)
-        if @book.save && logged_in? && @book.valid?
+        if @book.save && @book.valid?
             redirect_to book_path(@book)
         else
             render :new
@@ -17,11 +17,6 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find_by(id: params[:id])
-        @purchase = @book.purchases.build(user_id: current_user.id)
-        # @purchase = Purchase.new
-        # @purchase.book_id = @book.id
-        # @purchase.user_id = current_user.id
-        # we don't need to save @purchase 
     end
 
     def index
