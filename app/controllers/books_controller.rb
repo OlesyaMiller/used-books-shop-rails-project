@@ -31,7 +31,6 @@ class BooksController < ApplicationController
     end
 
     def edit
-        #make sure the book belongs to the current user 
         @book = Book.find_by(id: params[:id])
     end
 
