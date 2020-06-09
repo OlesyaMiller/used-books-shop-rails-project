@@ -1,4 +1,8 @@
-<h2>All Books</h2>
+<% if !params[:user_id] %>
+    <h2>All Books</h2>
+<% else %>
+    <h2><%= current_user.username %>'s Purchases</h2>
+<% end %>        
 
 <% if !params[:user_id] %>
     <p><strong>Search by Title:</strong></p>
