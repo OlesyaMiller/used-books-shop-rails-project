@@ -5,11 +5,13 @@
 <% end %>        
 
 <% if !params[:user_id] %>
-    <p><strong>Search by Title:</strong></p>
+    <p><strong>Search by Genre:</strong></p>
 
     <%= form_tag(books_path, method: :get) do %>
-        <%= text_field_tag(:search, params[:search]) %>
+        <%#= text_field_tag(:search) %>
+        <%= collection_select :book, :search, Genre.all, :id, :name, include_blank: true %>
         <%= submit_tag ("Search") %> 
+        <%# byebug %>
     <% end %>
 <% end %>
 
