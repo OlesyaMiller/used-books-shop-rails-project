@@ -6,6 +6,5 @@ class Book < ApplicationRecord
     validates :title, :author, :price, :number_of_pages, :description, presence: true
     accepts_nested_attributes_for :genre
 
-    # scope :search, -> (query){where('title LIKE ?', "%#{query}%")}
-    scope :search_by_genre, -> (query){where('genre.name ?', query)}
+    scope :search, -> (query){where('title LIKE ?', "%#{query}%")}
 end
