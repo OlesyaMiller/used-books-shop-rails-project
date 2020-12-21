@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+
     before_action :require_login
 
     def new
@@ -17,9 +18,9 @@ class PurchasesController < ApplicationController
     
     def purchase_params
         params.require(:purchase).permit(
-        :user_id,
-        :book_id,
-        :location
+            :user_id,
+            :book_id,
+            :location
         )
     end
 
